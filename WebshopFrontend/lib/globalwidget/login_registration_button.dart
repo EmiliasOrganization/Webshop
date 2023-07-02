@@ -4,10 +4,6 @@ import 'package:flutterfrontend/globalwidget/popups/login_popup.dart';
 import 'package:flutterfrontend/globalwidget/popups/registration_popup.dart';
 
 class LoginButton extends StatelessWidget {
-  static const List<String> choices = <String>[
-    'Anmelden',
-    'Registrieren',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +11,12 @@ class LoginButton extends StatelessWidget {
           icon: Icon(Icons.person),
           color: schemeColorGreen,
           onPressed: () {
-            showPopupMenu(context);
+            showLoginRegistrationMenu(context);
           },
     );
   }
 
-  void showPopupMenu(BuildContext context) {
+  void showLoginRegistrationMenu(BuildContext context) {
     final RenderBox button = context.findRenderObject() as RenderBox;
     final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
 
@@ -35,23 +31,23 @@ class LoginButton extends StatelessWidget {
     showMenu<String>(
       context: context,
       position: position,
-      items: choices.map((String choice) {
-        return PopupMenuItem<String>(
-          value: choice,
-          child: Text(choice),
-        );
-      }).toList(),
-    ).then((String? choice) {
-      if (choice != null) {
-        choiceAction(choice,context);
-      }
-    });
+      items:
+        [
+          PopupMenuItem(value: 'signIn', child: Text('Anmelden')),
+          PopupMenuItem(value: 'register', child: Text('Registrieren'))
+        ]
+    ).then((value) =>
+              {
+                choiceAction(value!, context)
+              }
+          );
   }
 
   void choiceAction(String choice, BuildContext context) {
-    if (choice == "Anmelden") {
+    if (choice == "signIn") {
       loginDialog(context);
-    } else if (choice == "Registrieren") {
+    }
+    if (choice == "register") {
       registrationDialog(context);
     }
   }

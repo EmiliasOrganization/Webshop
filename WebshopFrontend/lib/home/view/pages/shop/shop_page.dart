@@ -58,7 +58,7 @@ class _ShopPageState extends State<ShopPage> {
     _productListFuture = fetchProducts(category: newCategory, subCategory: newSubCategory);
     return CenteredView(
       child: Scaffold(
-          appBar: TopBar(itemScrollController: itemScrollController, ueberUns: false, title: true,),
+          appBar: TopBar(itemScrollController: itemScrollController, ueberUns: false),
          body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

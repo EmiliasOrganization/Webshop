@@ -68,7 +68,7 @@ class _CountButtonWithPopupState extends State<CountButtonWithPopup> with Ticker
                   color: schemeColorGreen,
                   onPressed:() {
                 Navigator.pushNamed(context, '/shoppingCart');
-                  }, // Replace with your desired onPressed function
+                  },
                 ),
                 if(boxItemLists.length > 0)
                  Container(
@@ -76,7 +76,7 @@ class _CountButtonWithPopupState extends State<CountButtonWithPopup> with Ticker
                     shape: BoxShape.circle,
                   ),
                   child: Text(
-                    boxItemLists.length.toString(), // Replace with your counter value
+                    boxItemLists.length.toString(),
                     style: TextStyle(
                       color: schemeColorGreen,
                       fontWeight: FontWeight.bold,
